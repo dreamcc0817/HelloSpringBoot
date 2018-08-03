@@ -1,0 +1,36 @@
+######################### 应用信息配置 #########################
+server:
+  servlet:
+    context-path: mydreamcc
+
+######################### Mybatis配置 #########################
+mybatis:
+  type-aliases-package: org.spring.springboot.domain
+  mapper-locations: classpath:mapper/*.xml
+
+######################### 数据源配置 #########################
+datasource:
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 15
+      max-lifetime: 1800000
+---
+######  开发环境
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/springtest
+
+---
+######  测试环境
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/
